@@ -17,7 +17,7 @@ export class LoginDialogComponent implements OnInit, OnDestroy {
   loginForm: FormGroup;
   username = new FormControl('', Validators.required);
   password = new FormControl('', Validators.required);
-  
+
   constructor(
     private router: Router,
     private fb: FormBuilder,
