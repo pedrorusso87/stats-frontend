@@ -1,0 +1,56 @@
+.actions-container {
+  margin-left: 150px;
+  margin-right: 150px;
+}
+
+.container {
+  height: 27%;
+}
+
+.home-title {
+  color: white;
+  padding-top: 140px;
+  padding-bottom: 115px;
+  text-align: center;
+}
+
+.card-subtitle {
+  color: white;
+  font-family: "Grotesk-Regular";
+  text-align: center;
+  letter-spacing: 2px;
+  font-size: 1.5rem;
+}
+
+.card-footer {
+  color: white;
+  font-family: "Grotesk-Light";
+  font-size: 18px;
+  text-align: center;
+  visibility: hidden;
+}
+
+.row {
+  margin: 0;
+}
+
+mat-card:hover {
+  transform: scale(0.7) translateY(-30px);
+  filter: drop-shadow(0 0 100px rgba(255, 255, 255, 0.8));
+
+  mat-card-footer {
+    visibility: visible;
+  }
+}
+
+card-footer:hover {
+  visibility: visible;
+}
+
+mat-card {
+  background: none;
+  border: none;
+  transform: scale(0.8);
+  transition: 0.2s;
+}
+

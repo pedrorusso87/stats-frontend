@@ -1,0 +1,32 @@
+input {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.btn {
+  border: none;
+  font-weight: 500;
+  margin-left: 15px;
+  padding: 2%;
+  width: 85%;
+}
+
+.form-field {
+  font-family: "Roboto";
+}
+
+.form-control {
+  margin-bottom: 10px;
+}
+
+.row {
+  justify-content: center;
+}
+
+.session-form {
+  background-color: darkslategray;
+}
+
+::ng-deep .mat-form-field-flex {
+  align-items: center !important;
+}

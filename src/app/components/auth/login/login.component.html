@@ -1,0 +1,33 @@
+<div class="container session-form-container">
+  <div class="row">
+    <div class="session-form">
+      <h2 class="session-form-title">{{'versus app login' | uppercase}}</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>{{'usuario' | titlecase}}</mat-label>
+            <input [formControl]="username" matInput required>
+            <mat-error *ngIf="username.invalid">{{'campo obligatorio' | titlecase}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group mt-3">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>{{'clave' | titlecase}}</mat-label>
+            <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" required>
+            <mat-icon matSuffix (click)="hide = !hide">
+              {{hide ? 'visibility_off' : 'visibility'}}
+            </mat-icon>
+            <mat-error *ngIf="password.invalid">{{'campo obligatorio' | titlecase}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group mb-3 mt-4">
+          <button type="submit" class="btn btn-primary btn-lg btn-block"> {{'ingresar' | uppercase }}</button>
+        </div>
+        <div class="form-group">
+          <a href="#" class="ForgetPwd">{{ 'olvidé mi clave' | titlecase}}</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  <ngx-spinner type="ball-clip-rotate-multiple"></ngx-spinner>
+</div>

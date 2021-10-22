@@ -1,0 +1,148 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@font-face {
+  font-family: "Grotesk-Light";
+  src: url(./assets/fonts/SpaceGrotesk-Light.ttf);
+}
+@font-face {
+  font-family: "Grotesk-Regular";
+  src: url(./assets/fonts/SpaceGrotesk-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Grotesk-Bold";
+  src: url(./assets/fonts/SpaceGrotesk-Bold.ttf);
+}
+
+@font-face {
+  font-family: "Grotesk-SemiBold";
+  src: url(./assets/fonts/SpaceGrotesk-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: "Grotesk-Medium";
+  src: url(./assets/fonts/SpaceGrotesk-Medium.ttf);
+}
+
+.backdropBackground {
+  background-color: rgba(0,0,0, 0.55);
+  backdrop-filter: blur(4px);
+}
+
+.card {
+  border-radius: 4px;
+  border: 1px solid #eee;
+  background-color: #fafafa;
+  margin: 0 8px 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  line-height: 24px;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+}
+
+.card-container .card:not(.highlight-card):hover .material-icons path {
+  fill: rgb(105, 103, 103);
+}
+
+.card.highlight-card {
+  background-color: #1976d2;
+  color: white;
+  font-weight: 600;
+  border: none;
+  width: auto;
+  min-width: 30%;
+  position: relative;
+}
+
+.card.card.highlight-card span {
+  margin-left: 60px;
+}
+
+.error-field {
+  border: solid red;
+}
+
+.error-message {
+  color: lightcoral;
+}
+
+.form-field {
+  font-family: "Grotesk-Regular";
+  margin-left: 15px;
+  width: 90%;
+}
+
+.mat-dialog-container {
+  background: none;
+  padding: 0px !important;
+}
+
+.mat-card,
+.mat-card-subtitle {
+  color: black;
+}
+
+.mat-select-value,
+.mat-select-arrow {
+  color: black;
+}
+
+.mat-select-value-text {
+  padding-left: 10px;
+}
+
+.mat-form-field-flex {
+  background-color: rgb(0, 0, 0, 0.09);
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: lightgreen;
+}
+
+.session-form-container {
+  align-items: center;
+}
+
+.session-form {
+  background: #282726;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 15px;
+  font-family: "Grotesk-Regular";
+  padding: 9%;
+  text-align: center;
+  width: 45%;
+}
+
+.session-form-title {
+  font-family: "Grotesk-Regular";
+}
+
+.session-form h3 {
+  text-align: center;
+  margin-bottom: 5%;
+  color: #fff;
+}
+
+#title {
+  font-size: 4.25rem;
+  font-family: "Bebas Neue";
+  letter-spacing: 0.5rem;
+}
+
+html,
+body {
+  height: 100%;
+  background-image: url("./assets/images/background.jpg");
+  background-size: 100%;
+  margin: 0;
+  font-family: "Grotesk-Regular", Roboto, "Helvetica Neue", sans-serif;
+}
