@@ -1,7 +1,3 @@
-import { Component, OnInit } from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
-import { LoginDialogComponent } from '../../auth/login/login.component';
-import { RegisterModalComponent } from '../../auth/register/register.component';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -10,13 +6,19 @@ import { RegisterModalComponent } from '../../auth/register/register.component';
 export class NavbarComponent implements OnInit {
 
   showNav = true;
-  registeredUser: any;
+
   constructor(
-    public dialog: MatDialog
-  ) { }
+    public dialog: MatDialog,
+    private localStorageService: LocalStorageService
+  ) {
+  }
 
   ngOnInit(): void {
   }
+
+  isUserLoggedIn(): boolean {
+    return this.localStorageService.retrieve("authToken") !== null;
+}
 
   onLoginClicked(): void {
     this.showNav = false;
@@ -28,7 +30,6 @@ export class NavbarComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(() => {
       this.showNav = true;
-      console.log('The dialog was closed');
     });
   }
 
@@ -42,9 +43,13 @@ export class NavbarComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(() => {
       this.showNav = true;
-      console.log('The dialog was closed');
     });
   }
 
 }
+import { Component, OnInit } from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import { LoginDialogComponent } from '../../auth/login/login.component';
+import { RegisterModalComponent } from '../../auth/register/register.component';
+import {LocalStorageService} from "ngx-webstorage";
 

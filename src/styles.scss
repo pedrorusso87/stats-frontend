@@ -96,6 +96,10 @@
   color: black;
 }
 
+.mat-card:not {
+  box-shadow: none;
+}
+
 .mat-select-value-text {
   padding-left: 10px;
 }

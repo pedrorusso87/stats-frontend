@@ -2,17 +2,15 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { combineLatest, Subject } from 'rxjs';
 import { LoginRequest } from '../register/model/register-model';
 import { AuthService } from '../services/auth.service';
+import {MatDialogRef} from "@angular/material/dialog";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginDialogComponent implements OnInit, OnDestroy {
-  errors = false;
-  errorMessage = null;
   hide = true;
   loginForm: FormGroup;
   username = new FormControl('', Validators.required);
@@ -22,7 +20,8 @@ export class LoginDialogComponent implements OnInit, OnDestroy {
     private router: Router,
     private fb: FormBuilder,
     private spinner: NgxSpinnerService,
-    private authService: AuthService
+    private authService: AuthService,
+    public dialogRef: MatDialogRef<LoginDialogComponent>
     ) {
       this.loginForm = this.fb.group({
         username: this.username,
@@ -39,11 +38,8 @@ export class LoginDialogComponent implements OnInit, OnDestroy {
 
   validateForm(): void {
     if (this.loginForm.valid) {
-      this.errors = false;
       this.spinner.show();
       this.loginUser()
-    } else {
-      this.errors = true;
     }
   }
 
@@ -55,12 +51,10 @@ export class LoginDialogComponent implements OnInit, OnDestroy {
     this.authService.login(userLoginRequest).subscribe(response => {
       if (response.authenticationToken) {
         this.spinner.hide();
-        this.router.navigate(['/dashboard'])
+        this.dialogRef.close();
+        this.router.navigate(['/stats'])
       }
     })
-  }
-
-  listenForLogin(): void {
   }
 
   getEmail(): any {
@@ -69,10 +63,6 @@ export class LoginDialogComponent implements OnInit, OnDestroy {
 
   getPassword(): any {
     return this.loginForm.get('password')?.value;
-  }
-
-  close(): void {
-    this.errorMessage = null;
   }
 
   ngOnDestroy(): void {
