@@ -51,12 +51,6 @@ describe('LoginDialogComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  
-  it('should set errors to true when form is invalid', () => {
-    component.validateForm();
-    expect(component.errors).toBe(true);
-  });
-
   it('should call auth service', () => {
     const spy = spyOn(authService, 'login').and.returnValue(of(mockResponse));
     component.loginUser()

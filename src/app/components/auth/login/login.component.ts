@@ -5,6 +5,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { LoginRequest } from '../register/model/register-model';
 import { AuthService } from '../services/auth.service';
 import {MatDialogRef} from "@angular/material/dialog";
+import { Store } from "@ngrx/store";
+import * as fromLogin from '../login/store';
+import {UserLoginRequest} from "../models/user";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,12 +18,16 @@ export class LoginDialogComponent implements OnInit, OnDestroy {
   loginForm: FormGroup;
   username = new FormControl('', Validators.required);
   password = new FormControl('', Validators.required);
+  loginError = false;
+  loginUserPending$ = this.store.select(fromLogin.getLoggedUserPending);
+  loginUserError$ = this.store.select(fromLogin.getLoggedUserError);
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private spinner: NgxSpinnerService,
     private authService: AuthService,
+    private store: Store,
     public dialogRef: MatDialogRef<LoginDialogComponent>
     ) {
       this.loginForm = this.fb.group({
@@ -47,12 +54,25 @@ export class LoginDialogComponent implements OnInit, OnDestroy {
     const userLoginRequest = {
       username: this.getEmail(),
       password: this.getPassword()
-    } as LoginRequest
-    this.authService.login(userLoginRequest).subscribe(response => {
-      if (response.authenticationToken) {
+    } as UserLoginRequest
+
+    this.store.dispatch(new fromLogin.LoginUser(userLoginRequest));
+    this.listenForLogin();
+  }
+
+  listenForLogin(): void {
+    this.loginUserPending$.pipe().subscribe(pending => {
+      if(!pending) {
         this.spinner.hide();
-        this.dialogRef.close();
-        this.router.navigate(['/stats'])
+        this.loginUserError$.pipe().subscribe(error => {
+          if (!error) {
+            this.loginError = false;
+            this.dialogRef.close();
+            this.router.navigate(['/stats']);
+          } else {
+            this.loginError = true;
+          }
+        })
       }
     })
   }

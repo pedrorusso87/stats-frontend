@@ -6,6 +6,9 @@ import { LoginRoutingModule } from './login-routing.module';
 import { LoginDialogComponent } from './login.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { StoreModule } from "@ngrx/store";
+import { EffectsModule } from "@ngrx/effects";
+import { reducers, effects } from './store';
 @NgModule({
   declarations: [LoginDialogComponent],
   imports: [
@@ -15,7 +18,9 @@ import { MatIconModule } from '@angular/material/icon';
     FormsModule,
     ReactiveFormsModule,
     NgxSpinnerModule,
-    MatIconModule
+    MatIconModule,
+    StoreModule.forFeature('loggedUser', reducers),
+    EffectsModule.forFeature(effects),
   ],
   exports: [LoginDialogComponent]
 })

@@ -2,16 +2,19 @@
   <div class="row">
     <div class="session-form">
       <h2 class="session-form-title">{{'versus app login' | uppercase}}</h2>
+      <div class="login-error" *ngIf="loginError">
+        <p class="login-error-message">El nombre de usuario o la clave son incorrectas</p>
+      </div>
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <mat-form-field appearance="outline" class="form-field">
+          <mat-form-field appearance="outline" class="form-field" [ngClass]="loginError ? 'mat-focused' : 'input-valid'">
             <mat-label>{{'usuario' | titlecase}}</mat-label>
             <input [formControl]="username" matInput required>
             <mat-error *ngIf="username.invalid">{{'campo obligatorio' | titlecase}}</mat-error>
           </mat-form-field>
         </div>
         <div class="form-group mt-3">
-          <mat-form-field appearance="outline" class="form-field">
+          <mat-form-field appearance="outline" class="form-field" [ngClass]="loginError ? 'mat-focused' : 'input-valid'">
             <mat-label>{{'clave' | titlecase}}</mat-label>
             <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" required>
             <mat-icon matSuffix (click)="hide = !hide">
