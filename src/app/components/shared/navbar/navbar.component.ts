@@ -1,3 +1,10 @@
+import { Component, OnInit } from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import { LoginDialogComponent } from '../../auth/login/login.component';
+import { RegisterModalComponent } from '../../auth/register/register.component';
+import {LocalStorageService} from "ngx-webstorage";
+import {AuthService} from "../../auth/services/auth.service";
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -5,11 +12,10 @@
 })
 export class NavbarComponent implements OnInit {
 
-  showNav = true;
-
   constructor(
     public dialog: MatDialog,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private authService: AuthService
   ) {
   }
 
@@ -21,35 +27,23 @@ export class NavbarComponent implements OnInit {
 }
 
   onLoginClicked(): void {
-    this.showNav = false;
     const dialogRef = this.dialog.open(LoginDialogComponent, {
       autoFocus: false,
       backdropClass: 'backdropBackground',
       width: '380px',
     })
-
-    dialogRef.afterClosed().subscribe(() => {
-      this.showNav = true;
-    });
   }
 
   onCreateAccountClicked(): void {
-    this.showNav = false;
     const dialogRef = this.dialog.open(RegisterModalComponent, {
       autoFocus: false,
       backdropClass: 'backdropBackground',
       width: '380px',
     })
-
-    dialogRef.afterClosed().subscribe(() => {
-      this.showNav = true;
-    });
   }
 
+  onLogoutClicked() {
+    this.authService.logout();
+  }
 }
-import { Component, OnInit } from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
-import { LoginDialogComponent } from '../../auth/login/login.component';
-import { RegisterModalComponent } from '../../auth/register/register.component';
-import {LocalStorageService} from "ngx-webstorage";
 
