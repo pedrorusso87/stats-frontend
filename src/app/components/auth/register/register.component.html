@@ -30,11 +30,11 @@
         <div class="form-group">
           <mat-form-field appearance="outline" class="form-field">
             <mat-label>{{'repetir clave' | titlecase}}</mat-label>
-            <input [formControl]="username" matInput [type]="hide ? 'password' : 'text'" required>
+            <input [formControl]="confirmedPassword" matInput [type]="hide ? 'password' : 'text'" required (keyup)="validatePassword()">
             <mat-icon matSuffix (click)="hide = !hide">
               {{hide ? 'visibility_off' : 'visibility'}}
             </mat-icon>
-            <mat-error *ngIf="username.invalid">{{'campo obligatorio' | titlecase}}</mat-error>
+            <mat-error *ngIf="confirmedPassword.invalid">{{getErrorMessage() | titlecase}}</mat-error>
           </mat-form-field>
         </div>
         <div class="row mb-3 mt-4">

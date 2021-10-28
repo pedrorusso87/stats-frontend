@@ -13,9 +13,9 @@ export class RegisterModalComponent implements OnInit {
   email = new FormControl('', Validators.required);
   username = new FormControl('', Validators.required);
   password = new FormControl('', Validators.required);
+  confirmedPassword = new FormControl('', Validators.required);
   userRegistrationRequest = {} as UserRegistrationRequest
   errors = false;
-  errorMessage = null;
   hide = true;
   hidePassword = true;
 
@@ -27,7 +27,8 @@ export class RegisterModalComponent implements OnInit {
     this.registerForm = this.fb.group({
       email: this.email,
       username: this.username,
-      password: this.password
+      password: this.password,
+      confirmedPassword: this.confirmedPassword
     });
   }
 
@@ -65,5 +66,26 @@ export class RegisterModalComponent implements OnInit {
 
   getUsername(): any {
     return this.registerForm.get('username')?.value;
+  }
+
+  getConfirmedPassword(): any {
+    return this.registerForm.get('confirmedPassword')?.value;
+  }
+
+  validatePassword() {
+    if (this.getConfirmedPassword() !== this.getPassword()) {
+      this.registerForm.get('confirmedPassword').setErrors({ invalid: true })
+    } else {
+      this.registerForm.get('confirmedPassword').setErrors(null)
+    }
+  }
+
+  getErrorMessage(): string {
+    const error = Object.keys(this.registerForm.get('confirmedPassword').errors)[0];
+    if (error === 'invalid' && this.getPassword() !== '') {
+      return "Las claves deben ser iguales"
+    } else {
+      return "campo requerido"
+    }
   }
 }
