@@ -68,7 +68,7 @@ export class LoginDialogComponent implements OnInit, OnDestroy {
           if (!error) {
             this.loginError = false;
             this.dialogRef.close();
-            this.router.navigate(['/stats']);
+            this.router.navigate(['/teams']);
           } else {
             this.loginError = true;
           }

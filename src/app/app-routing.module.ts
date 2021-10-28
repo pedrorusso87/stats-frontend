@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { StatsComponent } from './components/stats-page/stats.component';
 import { TeamsComponent } from './components/teams/teams.component';
 
 const routes: Routes = [
@@ -23,11 +22,6 @@ const routes: Routes = [
         path:'all',
         component: TeamsComponent
       }],
-  },
-  {
-    path: 'stats',
-    component: StatsComponent,
-
   },
 
   { path: 'login', loadChildren: () => import('./components/auth/login/login.module').then(m => m.LoginModule) },

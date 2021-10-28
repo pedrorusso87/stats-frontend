@@ -13,6 +13,7 @@ import { ComponentsModule } from './components/components.module';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MatDialogModule } from '@angular/material/dialog';
+import { TeamsPageModule } from "./components/teams/teams-page.module";
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     BrowserAnimationsModule,
     ComponentsModule,
     MatDialogModule,
+    TeamsPageModule,
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       maxAge: 20

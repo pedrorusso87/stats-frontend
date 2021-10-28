@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from "@ngrx/store";
+import * as fromTeams from './store/teams-actions';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -25,9 +27,12 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class TeamsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private store: Store
+  ) { }
 
   ngOnInit(): void {
+    this.store.dispatch(new fromTeams.GetTeams())
   }
 
   displayedColumns: string[] = ['name', 'demo-weight', 'demo-symbol'];
