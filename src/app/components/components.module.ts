@@ -6,8 +6,9 @@ import { StatsPageModule } from './stats-page/stats-page.module';
 import { HomeComponent } from './home/home.component';
 import { TeamsComponent } from './teams/teams.component';
 import { MatTableModule } from '@angular/material/table';
+import { AddTeamComponent } from './add-team/add-team.component';
 @NgModule({
-  declarations: [HomeComponent, TeamsComponent],
+  declarations: [HomeComponent, TeamsComponent, AddTeamComponent],
   imports: [
     CommonModule,
     MatCardModule,

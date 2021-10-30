@@ -6,8 +6,8 @@
 </div>
 <div class="row">
   <div class="col">
-    <mat-card class="card">
-      <img mat-card-image class="card-image img-fluid" src="assets/images/home2.png">
+    <mat-card class="card" (click)="navigate('teams/add')">
+      <img mat-card-image class="card-image img-fluid" src="assets/images/home2.png" >
       <mat-card-subtitle class="card-subtitle">{{'registra tu equipo' | uppercase}}</mat-card-subtitle>
       <mat-card-footer class="card-footer">Crea tu equipo con sus jugadores y guarda las estadísticas. </mat-card-footer>
     </mat-card>
@@ -16,9 +16,9 @@
     <mat-card class="card">
       <img mat-card-image class="card-image img-fluid" src="assets/images/home2.png">
       <mat-card-subtitle class="card-subtitle">{{'nueva competicion' | uppercase}}</mat-card-subtitle>
-      <mat-card-footer class="card-footer">Crea una competicion y registra a los equipos participantes</mat-card-footer>
+      <mat-card-footer class="card-footer">Añade una competicion y registra a los equipos participantes</mat-card-footer>
     </mat-card>
-  </div>  
+  </div>
   <div class="col">
     <mat-card class="card" (click)="navigate('teams/all')">
       <img mat-card-image class="card-image img-fluid" src="assets/images/home2.png">
