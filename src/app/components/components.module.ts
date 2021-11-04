@@ -7,6 +7,10 @@ import { HomeComponent } from './home/home.component';
 import { TeamsComponent } from './teams/teams.component';
 import { MatTableModule } from '@angular/material/table';
 import { AddTeamComponent } from './add-team/add-team.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
 @NgModule({
   declarations: [HomeComponent, TeamsComponent, AddTeamComponent],
   imports: [
@@ -14,7 +18,11 @@ import { AddTeamComponent } from './add-team/add-team.component';
     MatCardModule,
     MatSelectModule,
     StatsPageModule,
-    MatTableModule
+    MatTableModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatButtonModule,
   ]
 })
 export class ComponentsModule { }

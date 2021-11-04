@@ -14,6 +14,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TeamsPageModule } from "./components/teams/teams-page.module";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -21,20 +22,21 @@ import { TeamsPageModule } from "./components/teams/teams-page.module";
     NavbarComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    LoginModule,
-    NgxSpinnerModule,
-    HttpClientModule,
-    NgxWebstorageModule.forRoot(),
     BrowserAnimationsModule,
+    BrowserModule,
     ComponentsModule,
+    HttpClientModule,
+    LoginModule,
     MatDialogModule,
-    TeamsPageModule,
+    MatNativeDateModule,
+    NgxSpinnerModule,
+    NgxWebstorageModule.forRoot(),
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       maxAge: 20
-    })
+    }),
+    TeamsPageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

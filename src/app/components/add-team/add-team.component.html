@@ -1,1 +1,35 @@
-<p>add-team works!</p>
+<div class="body">
+  <div class="container">
+    <div class="page-title">
+      <h1 id="title">Crea tu equipo</h1>
+    </div>
+    <div class="container form-container col-8">
+      <form [formGroup]="registerTeamForm" class="form">
+        <div class="form-group">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>{{'Nombre del equipo' | titlecase}}</mat-label>
+            <input [formControl]="teamName" matInput required>
+            <mat-error *ngIf="teamName.invalid">{{'campo obligatorio' | titlecase}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group mt-3">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>{{'año de fundacion' | titlecase}}</mat-label>
+            <input matInput [matDatepicker]="picker" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="foundationYear.invalid">{{'campo obligatorio' | titlecase}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group-button row">
+          <div class="container col-5 finish-button">
+            <button mat-raised-button type="submit" class="btn btn-primary btn-lg btn-block"> {{'finalizar' | uppercase }}</button>
+          </div>
+          <div class="container col-5">
+            <button mat-raised-button type="submit" class="btn btn-info btn-lg btn-block"> {{'añadir jugadores' | uppercase }}</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
