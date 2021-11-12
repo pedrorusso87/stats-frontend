@@ -4,7 +4,7 @@
       <h1 id="title">Crea tu equipo</h1>
     </div>
     <div class="container form-container col-8">
-      <form [formGroup]="registerTeamForm" class="form">
+      <form [formGroup]="registerTeamForm" class="form" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <mat-form-field appearance="outline" class="form-field">
             <mat-label>{{'Nombre del equipo' | titlecase}}</mat-label>
@@ -12,15 +12,18 @@
             <mat-error *ngIf="teamName.invalid">{{'campo obligatorio' | titlecase}}</mat-error>
           </mat-form-field>
         </div>
-        <div class="form-group mt-3">
+        <div class="form-group mt-3 pb-3">
           <mat-form-field appearance="fill" class="form-field">
             <mat-label>{{'año de fundacion' | titlecase}}</mat-label>
-            <input matInput [matDatepicker]="picker" required>
+            <input [formControl]="foundationYear" [matDatepicker]="picker" [max]="maxDate" matInput required>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
             <mat-error *ngIf="foundationYear.invalid">{{'campo obligatorio' | titlecase}}</mat-error>
           </mat-form-field>
         </div>
+        <section>
+          <mat-checkbox>Soy el delegado</mat-checkbox>
+        </section>
         <div class="form-group-button row">
           <div class="container col-5 finish-button">
             <button mat-raised-button type="submit" class="btn btn-primary btn-lg btn-block"> {{'finalizar' | uppercase }}</button>

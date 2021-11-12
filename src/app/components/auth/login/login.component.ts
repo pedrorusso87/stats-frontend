@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { LoginRequest } from '../register/model/register-model';
 import { AuthService } from '../services/auth.service';
 import {MatDialogRef} from "@angular/material/dialog";
 import { Store } from "@ngrx/store";
